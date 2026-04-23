@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<LangVersion>Latest</LangVersion>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<DebugType>none</DebugType>
+		<Platforms>AnyCPU;x64</Platforms>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<TheLongDarkPath>D:\SteamLibrary\steamapps\common\TheLongDark</TheLongDarkPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="STBlade.Modding.TLD.Il2CppAssemblies.Windows" Version="2.51.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Using Include="System.Collections" />
+		<Using Include="Il2Cpp" />
+		<Using Include="Il2CppTMPro" />
+		<Using Include="HarmonyLib" />
+		<Using Include="MelonLoader" />
+		<Using Include="UnityEngine" />
+		<Using Include="UnityEngine.UI" />
+	</ItemGroup>
+
+	<PropertyGroup>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<AssemblyName>PZLoadingScreen</AssemblyName>
+		<RootNamespace>PZLoadingScreen</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Include="Core.cs" />
+	</ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(TheLongDarkPath)/Mods" />
+	</Target>
+</Project>
